@@ -1,0 +1,69 @@
+How to make this I/O UI for DSA practice:
+
+Directory Structure:
+Parent Folder (Practicing-DSA-from-Scratch)
+    |
+    |___.vscode/
+    |       └── tasks.json      <-- Centralized Logic
+    |
+    |___Pattern_Problems/       <-- Topic-specific Folder
+    |       |___input.txt       <-- Local Input
+    |       |___output.txt      <-- Local Output
+    |       |___DSA.py          <-- Problem Solutions
+    |
+    |___Math_Problems/          <-- Future Topic Folder
+            |___input.txt
+            |___output.txt
+            |___math_logic.py
+
+Follow bellow steps to create tasks.json:
+Terminal -> Configure Tasks -> Create tasks.json file from template -> Other (Example: To run an arbitrary external command)
+
+In tasks.json paste the following code:
+
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile and run",
+            "type": "shell",
+            "command": "",
+            "args": [
+                "cat",
+                "input.txt",
+                "|",
+                "python",
+                "${relativeFile}",
+                ">",
+                "output.txt",
+            ],
+            "presentation": {
+                "reveal": "never",
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true,
+            },
+            "problemMatcher": {
+                "owner": "py",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        }
+    ]
+}
+
+If there is no dependcy issue then this should work, as for 
+the panel arrangement of input.txt, output.txt and 
+main_pyhton_file, you could find the option to split window in 
+View --> Edit Layout.
