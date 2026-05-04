@@ -46,13 +46,38 @@ def calc_hcf(a,b):
         divisor = rem
     print(f"HCF of {a,b} is {divisor}")
 
-#print("\n4. Armstrong Number\n")
+#4. Fibonacci Series
+
+def fib_loop(a,b,rng):
+    print("Fibonacci Series with Loop: ")
+    for fibo in range(rng):
+        print(a, end = " ")
+        newfibo = a + b
+        a = b
+        b = newfibo
+
+def fib_alt(a, b, rng):
+    print("Fibonacci Series with Reccursion: ")
+    count = 1
+    def fib_rec(a, b, rng, count):
+        if count <= rng:
+            print(a, end = " ")
+            newfibo = a + b
+            a = b
+            b = newfibo
+            count += 1
+            fib_rec(a, b, rng, count)
+        else:
+            return
+    
+    fib_rec(a, b, rng, count)
 
 
 #-------MAIN--------
 Mnum = int(input())
 a = int(input())
 b = int(input())
+rng = int(input())
 if __name__ == "__main__":
 
     print("Basic Math Implementations\n")
@@ -61,3 +86,6 @@ if __name__ == "__main__":
     #countDigit(Mnum)
     #reverseNum(Mnum)
     #calc_hcf(a, b)
+    
+    #fib_loop(a,b,rng)
+    #fib_alt(a, b, rng)
