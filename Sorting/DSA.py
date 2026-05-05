@@ -27,6 +27,17 @@ def b_sort_alt(arr):
     
     print("Bubble Sort(Improved): ", arr)
 
+#2. Selection Sort
+def s_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        min_index = i
+        for j in range(i + 1, n):
+            if arr[min_index] > arr[j]:
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+    print("Selection Sort: ", arr)
+
 #-------MAIN--------
 arr = list(map(int, input().split()))
 if __name__ == "__main__":
@@ -35,4 +46,5 @@ if __name__ == "__main__":
     #Run The functions by uncommenting them...
 
     #b_sort(arr)
-    b_sort_alt(arr)
+    #b_sort_alt(arr)
+    #s_sort(arr)
