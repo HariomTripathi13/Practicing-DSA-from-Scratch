@@ -38,6 +38,37 @@ def s_sort(arr):
         arr[i], arr[min_index] = arr[min_index], arr[i]
     print("Selection Sort: ", arr)
 
+#3. Insertion Sort
+def i_sort(arr):
+    n = len(arr)
+    for i in range(1, n):
+        insert_index = i
+        current_val = arr.pop(i)
+        for j in range(i - 1, -1, -1):
+            if arr[j] > current_val:
+                insert_index = j
+        arr.insert(insert_index, current_val)
+    
+    print("Insertion Sort: ", arr)
+
+# Insertion Sort Improvement-------
+
+def i_sort_alt(arr):
+    n = len(arr)
+    for i in range(1, n):
+        # Pocketing the current value
+        current_val = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > current_val:
+            # Shifting the value
+            arr[j + 1] = arr[j]
+            j -= 1
+            
+        # Assigning the current value
+        arr[j + 1] = current_val
+    
+    print("Insertion Sort: ", arr)
+
 #-------MAIN--------
 arr = list(map(int, input().split()))
 if __name__ == "__main__":
@@ -48,3 +79,5 @@ if __name__ == "__main__":
     #b_sort(arr)
     #b_sort_alt(arr)
     #s_sort(arr)
+    #i_sort(arr)
+    i_sort_alt(arr)
