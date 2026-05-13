@@ -63,11 +63,38 @@ def i_sort_alt(arr):
             # Shifting the value
             arr[j + 1] = arr[j]
             j -= 1
-            
+
         # Assigning the current value
         arr[j + 1] = current_val
     
-    print("Insertion Sort: ", arr)
+    print("Insertion Sort(Improved): ", arr)
+
+#4. Quick Sort
+
+def partition(arr, low, high):
+    pivot = arr[high]
+    i = low - 1
+
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            arr[i + 1], arr[j] = arr[j], arr[i + 1]
+            i += 1
+    
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1
+
+def _q_sort(arr, low, high):
+    if low < high:
+        pivot_index = partition(arr, low, high)
+        _q_sort(arr, low, pivot_index - 1)
+        _q_sort(arr, pivot_index + 1, high)
+    
+def q_sort(arr, high = None):
+    if high is None:
+        high = len(arr) - 1
+    _q_sort(arr, 0, len(arr) - 1)
+    print("Quick Sort: ", arr)
+
 
 #-------MAIN--------
 arr = list(map(int, input().split()))
@@ -80,4 +107,5 @@ if __name__ == "__main__":
     #b_sort_alt(arr)
     #s_sort(arr)
     #i_sort(arr)
-    i_sort_alt(arr)
+    #i_sort_alt(arr)
+    q_sort(arr)
